@@ -1,0 +1,19 @@
+-
+ name: checks/creates user in windows server
+ hosts: all
+ tasks:
+  - name: Creating/checking user
+    win_user:
+     name: svcAnsi
+     password: Admin098!
+     state: present
+     groups:
+      - Administrators
+     group_action: add
+     password_never_expires: yes
+    register: fat
+
+  - debug:
+     var: fat
+
+
